@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Alunos</h1>
+        <form id="cadastroForm">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="peso">Peso (kg):</label>
+            <input type="number" id="peso" required>
+
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" required>
+
+            <label for="altura">Altura (cm):</label>
+            <input type="number" id="altura" required>
+
+            <input type="submit" value="Cadastrar">
+        </form>
+
+        <div id="imcResult">
+            <!-- O resultado do IMC será exibido aqui -->
+        </div>
+    </div>
+
+    <!-- Lista de alunos cadastrados -->
+    <div class="container">
+        <div id="alunosCadastrados">
+            <h2>Alunos Cadastrados</h2>
+            <ul id="listaAlunos">
+                <!-- Aqui serão listados os alunos cadastrados -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Obter os valores dos campos
+            var nome = document.getElementById("nome").value;
+            var email = document.getElementById("email").value;
+            var peso = parseFloat(document.getElementById("peso").value);
+            var idade = parseInt(document.getElementById("idade").value);
+            var altura = parseFloat(document.getElementById("altura").value) / 100;
+
+            // Calcular o IMC
+            var imc = peso / (altura * altura);
+
+            // Exibir o resultado do IMC
+            var resultado = "Nome: " + nome + "<br>Email: " + email + "<br>Idade: " + idade + " anos<br>Peso: " + peso + " kg<br>IMC: " + imc.toFixed(2) + "<br>";
+
+            if (imc > 24.9) {
+                resultado += "Atenção: Acima do peso!";
+            }
+
+            document.getElementById("imcResult").innerHTML = resultado;
+
+            // Adicionar o aluno à lista de alunos cadastrados
+            var listaAlunos = document.getElementById("listaAlunos");
+            var novoAluno = document.createElement("li");
+            novoAluno.innerHTML = "Nome: " + nome + "<br>Email: " + email + "<br>Idade: " + idade + " anos<br>Peso: " + peso + " kg<br>IMC: " + imc.toFixed(2) + (imc > 24.9 ? " - <span style='color: red;'>Atenção: Acima do peso</span>" : "");
+            listaAlunos.appendChild(novoAluno);
+        });
+    </script>
+</body>
+</html>
