@@ -1,7 +1,7 @@
 /* Estilos para a página de cadastro */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #222222, #f0eff1);
+    background: linear-gradient(135deg, #666262, #f0eff1);
     margin: 0;
     padding: 0;
     display: flex;
@@ -9,7 +9,43 @@ body {
     align-items: center;
     height: 100vh;
 }
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
 
+#imcResult {
+    display: none; /* Esconder o resultado do IMC inicialmente */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#imcDescription {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#imcImage {
+    max-width: 100%;
+    height: auto;
+}    
+/* Estilizando o campo de seleção de gênero */
+#genero {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #030303;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #030303;
+}
+
+#genero:focus {
+    border-color: #070707;
+}
 
 h1 {
     color: #080808;
@@ -62,18 +98,21 @@ input[type="submit"]:hover {
 
 /* Estilos para a lista de alunos cadastrados */
 #alunosCadastrados {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    text-align: right;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: left;
 }
 
-ul {
+#listaAlunos {
     list-style: none;
     padding: 0;
 }
 
-li {
-    font-size: 16px;
-    margin-bottom: 10px;
+#listaAlunos li {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
 }
